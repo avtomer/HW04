@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Read</title>
+</head>
+<body>
+ Read Database:<br>
+<button onclick="Read()">Read</button> 
+<div class="add-info">
+    <span class="rightfloat">
+        DataBase <span id="data"></span>
+        </span>
+    </span>
+</div>
+</body>
+
+<script src ="https://cdn.jsdelivr.net/npm/superagent"></script>
+<script>
+function Read(){
+    
+    var url =`http://localhost:3000/read`;
+    superagent.get(url)
+    .end(function(err,res){
+            if(err){
+                console.log('err:', err);    
+            }
+            else{
+                console.log('response:', res.text); 
+                document.getElementById('data').innerHTML = res.text;
+            }
+        });
+}
+
+
+</script>
+</html>
